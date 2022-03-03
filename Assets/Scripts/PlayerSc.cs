@@ -76,8 +76,16 @@ public class PlayerSc : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            livescore --;
-            live.text = livescore.ToString();
+            if (livescore <= 0)
+            {
+                live.text = "0";
+            }
+            else
+            {
+                livescore --;
+                live.text = livescore.ToString();
+            }
+            
         }
     }
     
