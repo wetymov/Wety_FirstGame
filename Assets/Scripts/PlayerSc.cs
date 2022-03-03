@@ -11,6 +11,8 @@ public class PlayerSc : MonoBehaviour
     public Text live;
     public bool JumpAllow = true;
     public int livescore = 5;
+    public int score = 0;
+    public Text textscore;
     public Transform groundCheck;
     public LayerMask groundMask;
     private bool ground = true;
@@ -76,8 +78,25 @@ public class PlayerSc : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            livescore --;
-            live.text = livescore.ToString();
+            if (livescore <= 0)
+            {
+                livescore --;
+                live.text = "0";
+            }
+            else
+            {
+                livescore --;
+                live.text = livescore.ToString();
+            }
+            
+        }
+
+
+        if (collision.tag == "score_count")
+        {
+            score ++;
+            textscore.text = score.ToString();
+
         }
     }
     
